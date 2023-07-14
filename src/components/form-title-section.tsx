@@ -1,9 +1,10 @@
-import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { useAppDispatch, useAppSelector } from '@app/hooks';
 import {
   updateTitle,
   updateDescription,
   setFocusedStatus
 } from '@app/slices/titleSlice';
+import { setFocusedStatusAt } from '@app/slices/contentSlice';
 import '@styles/style.scss';
 import '@styles/form-title.scss';
 
@@ -12,20 +13,28 @@ export default function FormTitleSection() {
   const { title, description, isFocused } = useAppSelector(
     (state) => state.titleSlice
   );
+  const { questions } = useAppSelector((state) => state.contentSlice);
+
+  const unfocusAllQuestions = () => {
+    if (questions.length === 0) return;
+    questions.forEach((_, index) => {
+      dispatch(setFocusedStatusAt({ index, status: false }));
+    });
+  };
 
   const onTitleSectionClick = () => {
+    if (isFocused) return;
+    unfocusAllQuestions();
     dispatch(setFocusedStatus({ status: true }));
   };
 
-  const onTitleSectionBlur = () => {
-    dispatch(setFocusedStatus({ status: false }));
-  };
-
   const onTitleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (title === e.target.innerText) return;
     dispatch(updateTitle({ title: e.target.innerText }));
   };
 
   const onDescriptionBlur = (e: React.FocusEvent<HTMLDivElement>) => {
+    if (description === e.target.innerText) return;
     dispatch(updateDescription({ description: e.target.innerText }));
   };
 
@@ -33,27 +42,26 @@ export default function FormTitleSection() {
     <>
       <section
         onMouseDown={onTitleSectionClick}
-        onBlur={onTitleSectionBlur}
         className={`form-title-section ${isFocused ? 'focus' : ''}`}
       >
         {isFocused ? (
           <>
             <div
-              placeholder="Form title"
               onBlur={onTitleBlur}
               contentEditable
               suppressContentEditableWarning={true}
               role="textbox"
+              aria-label="Form title"
               className="form-title textbox"
             >
               {title}
             </div>
             <div
-              placeholder="Form description"
               onBlur={onDescriptionBlur}
               contentEditable
               suppressContentEditableWarning={true}
               role="textbox"
+              aria-label="Form description"
               className="form-description textbox"
             >
               {description}
@@ -61,10 +69,10 @@ export default function FormTitleSection() {
           </>
         ) : (
           <>
-            <h1 className="form-title">{title || 'Untitled form'}</h1>
-            <h4 className="form-description">
+            <span className="form-title">{title || 'Untitled form'}</span>
+            <span className="form-description">
               {description || 'Form description'}
-            </h4>
+            </span>
           </>
         )}
       </section>
