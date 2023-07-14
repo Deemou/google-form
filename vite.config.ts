@@ -1,9 +1,10 @@
 import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [reactRefresh()],
   server: {
     open: true
   },
@@ -16,5 +17,14 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: 'src/setupTests',
     mockReset: true
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@app': path.resolve(__dirname, 'src/app'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@styles': path.resolve(__dirname, 'src/styles')
+    }
   }
 });

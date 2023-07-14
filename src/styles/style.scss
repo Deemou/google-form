@@ -1,0 +1,12 @@
+@import './reset';
+@import './vars';
+
+body {
+  background-color: $white-lilac;
+}
+
+button {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
