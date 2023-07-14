@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface ItitleSlice {
   title: string;
   description: string;
+  isFocused: boolean;
 }
 
 const initialState: ItitleSlice = {
   title: 'Untitled form',
-  description: ''
+  description: '',
+  isFocused: false
 };
 
 const titleSlice = createSlice({
@@ -24,10 +26,15 @@ const titleSlice = createSlice({
     ) => {
       const { description } = action.payload;
       state.description = description;
+    },
+    setFocusedStatus: (state, action: PayloadAction<{ status: boolean }>) => {
+      const { status } = action.payload;
+      state.isFocused = status;
     }
   }
 });
 
-export const { updateTitle, updateDescription } = titleSlice.actions;
+export const { updateTitle, updateDescription, setFocusedStatus } =
+  titleSlice.actions;
 
 export default titleSlice.reducer;

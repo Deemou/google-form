@@ -1,3 +1,9 @@
+import FormTitleSection from '@/components/form-title-section';
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <FormTitleSection />
+    </div>
+  );
 }

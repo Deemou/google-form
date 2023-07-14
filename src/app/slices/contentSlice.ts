@@ -13,13 +13,14 @@ interface IQuestion {
   optionList: string[];
   hasEtc: boolean;
   isRequired: boolean;
+  isFocused: boolean;
   chosenOptions: string[];
   etcInput: string;
   isError: false;
 }
 
 interface IcontentSlice {
-  questions: [IQuestion];
+  questions: IQuestion[];
 }
 
 const defaultQuestion: IQuestion = {
@@ -28,6 +29,7 @@ const defaultQuestion: IQuestion = {
   optionList: ['Option 1'],
   hasEtc: false,
   isRequired: false,
+  isFocused: false,
   chosenOptions: [],
   etcInput: '',
   isError: false
@@ -108,6 +110,14 @@ const contentSlice = createSlice({
       state.questions[index].isRequired = !state.questions[index].isRequired;
     },
 
+    setFocusedStatusAt: (
+      state,
+      action: PayloadAction<{ index: number; status: boolean }>
+    ) => {
+      const { index, status } = action.payload;
+      state.questions[index].isFocused = status;
+    },
+
     setEtcStatusAt: (
       state,
       action: PayloadAction<{ index: number; status: boolean }>
@@ -128,6 +138,7 @@ export const {
   addOptionAt,
   removeOptionAt,
   toggleRequiredAt,
+  setFocusedStatusAt,
   setEtcStatusAt
 } = contentSlice.actions;
 

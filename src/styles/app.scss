@@ -1,7 +1,10 @@
 @import './vars';
 
 .wrapper {
-  display: flex;
-  justify-content: center;
+  margin: auto;
+  width: 770px;
+  min-width: 250px;
   padding: 50px;
+  padding-bottom: 64px;
+  word-wrap: break-word;
 }
