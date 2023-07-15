@@ -1,10 +1,10 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { setFocusedStatus } from '@app/slices/titleSlice';
+import { setFocusedStatus } from '@app/slices/infoSlice';
 import { setFocusedStatusAt } from '@app/slices/contentSlice';
 import { useCallback } from 'react';
 import Question from './question';
 
-export default function FormContentSection() {
+export default function FormContent() {
   const dispatch = useAppDispatch();
   const { questions } = useAppSelector((state) => state.contentSlice);
 

@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface ItitleSlice {
+interface IinfoSlice {
   title: string;
   description: string;
   isFocused: boolean;
 }
 
-const initialState: ItitleSlice = {
+const initialState: IinfoSlice = {
   title: 'Untitled form',
   description: '',
   isFocused: false
 };
 
-const titleSlice = createSlice({
-  name: 'titleSlice',
+const infoSlice = createSlice({
+  name: 'infoSlice',
   initialState,
   reducers: {
     updateTitle: (state, action: PayloadAction<{ title: string }>) => {
@@ -35,6 +35,6 @@ const titleSlice = createSlice({
 });
 
 export const { updateTitle, updateDescription, setFocusedStatus } =
-  titleSlice.actions;
+  infoSlice.actions;
 
-export default titleSlice.reducer;
+export default infoSlice.reducer;

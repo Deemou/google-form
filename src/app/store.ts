@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import titleSlice from './slices/titleSlice';
+import infoSlice from './slices/infoSlice';
 import contentSlice from './slices/contentSlice';
 
 export const store = configureStore({
-  reducer: { titleSlice, contentSlice }
+  reducer: { infoSlice, contentSlice }
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -1,12 +1,12 @@
-import FormTitleSection from '@/components/form-title-section';
-import FormContentSection from '@/components/form-content-section';
+import FormInfo from '@/components/form-info';
+import FormContent from '@/components/form-content';
 import '@styles/form.scss';
 
 export default function Home() {
   return (
     <div>
-      <FormTitleSection />
-      <FormContentSection />
+      <FormInfo />
+      <FormContent />
     </div>
   );
 }
