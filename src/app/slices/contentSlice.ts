@@ -10,7 +10,7 @@ interface IQuestion {
   isFocused: boolean;
   chosenOptions: string[];
   etcInput: string;
-  isError: false;
+  isError: boolean;
 }
 
 interface IcontentSlice {
@@ -118,6 +118,65 @@ const contentSlice = createSlice({
     ) => {
       const { index, status } = action.payload;
       state.questions[index].hasEtc = status;
+    },
+
+    updateTextAnswerAt: (
+      state,
+      action: PayloadAction<{ index: number; text: string }>
+    ) => {
+      const { index, text } = action.payload;
+      state.questions[index].chosenOptions[0] = text;
+    },
+
+    updateRadioOrDropdownAnswerAt: (
+      state,
+      action: PayloadAction<{ index: number; value: string }>
+    ) => {
+      const { index, value } = action.payload;
+      state.questions[index].chosenOptions[0] = value;
+    },
+
+    updateCheckboxAnswerAt: (
+      state,
+      action: PayloadAction<{ index: number; value: string; checked: boolean }>
+    ) => {
+      const { index, value, checked } = action.payload;
+      if (checked) state.questions[index].chosenOptions.push(value);
+      else
+        state.questions[index].chosenOptions.splice(
+          state.questions[index].chosenOptions.indexOf(value),
+          1
+        );
+    },
+
+    updateEtcInputAt: (
+      state,
+      action: PayloadAction<{ index: number; etcInput: string }>
+    ) => {
+      const { index, etcInput } = action.payload;
+      if (!state.questions[index].chosenOptions.includes('etc')) {
+        if (state.questions[index].type === 'radio') {
+          state.questions[index].chosenOptions = [];
+        }
+        state.questions[index].chosenOptions.push('etc');
+      }
+      state.questions[index].etcInput = etcInput;
+    },
+
+    updateErrorStatusAt: (state, action: PayloadAction<{ index: number }>) => {
+      const { index } = action.payload;
+      if (
+        state.questions[index].isRequired &&
+        (state.questions[index].chosenOptions.length === 0 ||
+          state.questions[index].chosenOptions[0] === '')
+      )
+        state.questions[index].isError = true;
+      else state.questions[index].isError = false;
+    },
+
+    clearAnswerAt: (state, action: PayloadAction<{ index: number }>) => {
+      const { index } = action.payload;
+      state.questions[index].chosenOptions = [];
     }
   }
 });
@@ -133,7 +192,13 @@ export const {
   removeOptionAt,
   toggleRequiredAt,
   setFocusedStatusAt,
-  setEtcStatusAt
+  setEtcStatusAt,
+  updateTextAnswerAt,
+  updateRadioOrDropdownAnswerAt,
+  updateCheckboxAnswerAt,
+  updateEtcInputAt,
+  updateErrorStatusAt,
+  clearAnswerAt
 } = contentSlice.actions;
 
 export default contentSlice.reducer;
