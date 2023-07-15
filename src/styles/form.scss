@@ -152,6 +152,7 @@
 .question-setting {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   column-gap: 15px;
   border-top: 1px solid $light-gray;
   margin-top: 20px;
@@ -159,8 +160,10 @@
   height: 40px;
 }
 
-.divider {
+.divider-vertical {
   border: 1px solid $light-gray;
+  width: 1px;
+  height: 25px;
 }
 
 .add-question-button {
@@ -168,8 +171,6 @@
   position: absolute;
   right: -40px;
   background-color: $white;
-  width: 35px;
-  height: 35px;
   border: 1px solid $light-gray;
   border-radius: 10px;
 }

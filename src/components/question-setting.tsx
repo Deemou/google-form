@@ -41,6 +41,7 @@ export default function QuestionSetting({ index }: QuestionSettingProps) {
           type="button"
           title="Duplicate"
           aria-label="Duplicate Question"
+          className="feature-button backlight"
         >
           <DuplicateICon />
         </button>
@@ -49,10 +50,11 @@ export default function QuestionSetting({ index }: QuestionSettingProps) {
           type="button"
           title="Delete"
           aria-label="Delete Question"
+          className="feature-button backlight"
         >
           <TrashbinIcon />
         </button>
-        <div className="divider" />
+        <div className="divider-vertical" />
         <div className="required-checkbox">
           <span>Required</span>
           <input

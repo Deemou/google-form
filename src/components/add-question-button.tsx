@@ -33,7 +33,7 @@ export const AddQuestionButton = ({
       type="button"
       title="Add question"
       aria-label="Add question"
-      className="add-question-button"
+      className="add-question-button feature-button"
     >
       <AddIcon />
     </button>
