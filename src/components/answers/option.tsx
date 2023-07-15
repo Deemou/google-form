@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/app/hooks';
 import { changeNthOptionAt, removeOptionAt } from '@/app/slices/contentSlice';
-import RemoveOptionButton from '../removeOptionButton';
+import RemoveOptionButton from '../remove-option-button';
 
 interface OptionProps {
   optionList: string[];

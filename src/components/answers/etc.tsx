@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { setEtcStatusAt } from '@/app/slices/contentSlice';
-import RemoveOptionButton from '../removeOptionButton';
+import RemoveOptionButton from '../remove-option-button';
 import Checker from '../checker';
 
 interface EtcProps {
