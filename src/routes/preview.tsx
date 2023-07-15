@@ -1,3 +1,11 @@
+import Layout from '@/components/layout';
+import UserFormInfo from '@/components/user-form-info';
+import '@styles/form.scss';
+
 export default function Preview() {
-  return <div>Preview</div>;
+  return (
+    <Layout>
+      <UserFormInfo />
+    </Layout>
+  );
 }
