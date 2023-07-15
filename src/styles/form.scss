@@ -95,10 +95,6 @@
   margin-right: 5px;
 }
 
-.option-list-wrapper {
-  padding-right: 20px;
-}
-
 .option-wrapper {
   display: flex;
   width: 100%;
@@ -136,4 +132,29 @@
 
 .add-option {
   margin-left: -3px;
+}
+
+.required-checkbox {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+
+  input {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+.question-setting {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 15px;
+  border-top: 1px solid $light-grey;
+  margin-top: 20px;
+  padding-top: 20px;
+  height: 40px;
+}
+
+.divider {
+  border: 1px solid $light-grey;
 }

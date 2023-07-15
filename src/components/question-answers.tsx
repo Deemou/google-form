@@ -13,10 +13,5 @@ export default function QuestionAnswers({ index }: QuestionAnswersProps) {
     return <input disabled placeholder="Short answer text" />;
   else if (type === 'long-answer')
     return <input disabled placeholder="Long answer text" />;
-  else
-    return (
-      <div className="option-list-wrapper">
-        <OptionList questionIndex={index} />
-      </div>
-    );
+  else return <OptionList questionIndex={index} />;
 }

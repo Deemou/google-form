@@ -23,7 +23,7 @@ const defaultQuestion: IQuestion = {
   optionList: ['Option 1'],
   hasEtc: false,
   isRequired: false,
-  isFocused: true,
+  isFocused: false,
   chosenOptions: [],
   etcInput: '',
   isError: false

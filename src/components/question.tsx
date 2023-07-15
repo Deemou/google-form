@@ -1,4 +1,5 @@
 import QuestionAnswers from './question-answers';
+import QuestionSetting from './question-setting';
 import QuestionTitle from './question-title';
 
 interface QuestionProps {
@@ -19,7 +20,7 @@ export default function Question({
     >
       <QuestionTitle index={index} />
       <QuestionAnswers index={index} />
-      {/* {isFocused && <QuestionSetting index={index} />} */}
+      {isFocused && <QuestionSetting index={index} />}
     </div>
   );
 }
