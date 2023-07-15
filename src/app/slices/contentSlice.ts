@@ -46,9 +46,9 @@ const contentSlice = createSlice({
 
     changeQuestionType: (
       state,
-      action: PayloadAction<{ type: questionType; index: number }>
+      action: PayloadAction<{ index: number; type: questionType }>
     ) => {
-      const { type, index } = action.payload;
+      const { index, type } = action.payload;
       state.questions[index].type = type;
     },
 
