@@ -5,8 +5,7 @@ import {
   setFocusedStatus
 } from '@app/slices/titleSlice';
 import { setFocusedStatusAt } from '@app/slices/contentSlice';
-import '@styles/style.scss';
-import '@styles/form-title.scss';
+import { useCallback } from 'react';
 
 export default function FormTitleSection() {
   const dispatch = useAppDispatch();
@@ -15,12 +14,12 @@ export default function FormTitleSection() {
   );
   const { questions } = useAppSelector((state) => state.contentSlice);
 
-  const unfocusAllQuestions = () => {
+  const unfocusAllQuestions = useCallback(() => {
     if (questions.length === 0) return;
     questions.forEach((_, index) => {
       dispatch(setFocusedStatusAt({ index, status: false }));
     });
-  };
+  }, []);
 
   const onTitleSectionClick = () => {
     if (isFocused) return;

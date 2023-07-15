@@ -1,0 +1,42 @@
+@import 'vars';
+
+.textbox {
+  overflow-wrap: break-word;
+  outline: none;
+  border-bottom: 1px solid $light-grey;
+}
+
+.focus {
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0 1px 1px 0 rgba(0, 0, 0, 0.141), 0 1px 3px 0 rgba(0, 0, 0, 0.122);
+}
+
+.form-title-section {
+  border-top: 10px solid $purple-heart;
+}
+
+.form-title {
+  font-size: 32px;
+}
+
+.form-description {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.question {
+  margin-top: 15px;
+}
+
+.question-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-title {
+  font-weight: 500;
+}
+
+.required {
+  color: $red;
+}

@@ -1,11 +1,5 @@
+import { questionType } from '@/types/formTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-type questionType =
-  | 'short-answer'
-  | 'long-answer'
-  | 'radio'
-  | 'checkboxes'
-  | 'dropdown';
 
 interface IQuestion {
   title: string;
