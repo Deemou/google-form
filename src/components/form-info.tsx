@@ -19,7 +19,7 @@ export default function FormInfo() {
     questions.forEach((_, index) => {
       dispatch(setFocusedStatusAt({ index, status: false }));
     });
-  }, []);
+  }, [questions.length]);
 
   const onInfoClick = () => {
     if (isFocused) return;

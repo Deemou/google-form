@@ -13,7 +13,7 @@ export default function FormContent() {
     questions.forEach((_, index) => {
       dispatch(setFocusedStatusAt({ index, status: false }));
     });
-  }, []);
+  }, [questions.length]);
 
   const onClickQuestion = (index: number) => {
     if (questions[index].isFocused) return;
