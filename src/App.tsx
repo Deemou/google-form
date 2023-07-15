@@ -4,12 +4,11 @@ import Home from './routes/home';
 import Preview from './routes/preview';
 import Submit from './routes/submit';
 import '@styles/style.scss';
-import '@styles/app.scss';
 
 function App() {
   return (
     <Router>
-      <div className="wrapper">
+      <div>
         <Routes>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/" element={<Home />}></Route>

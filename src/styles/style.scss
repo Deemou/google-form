@@ -20,3 +20,23 @@ svg {
   width: 20px;
   height: 20px;
 }
+
+.wrapper {
+  margin: auto;
+  max-width: 770px;
+  min-width: 250px;
+  padding: 60px 50px;
+  word-wrap: break-word;
+}
+
+.feature-button {
+  width: 35px;
+  height: 35px;
+}
+
+.backlight {
+  &:hover {
+    background-color: $white-lilac;
+    border-radius: 10px;
+  }
+}
