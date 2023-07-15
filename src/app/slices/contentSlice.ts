@@ -23,13 +23,13 @@ const defaultQuestion: IQuestion = {
   optionList: ['Option 1'],
   hasEtc: false,
   isRequired: false,
-  isFocused: false,
+  isFocused: true,
   chosenOptions: [],
   etcInput: '',
   isError: false
 };
 const initialState: IcontentSlice = {
-  questions: [defaultQuestion]
+  questions: [{ ...defaultQuestion, isFocused: false }]
 };
 
 const contentSlice = createSlice({

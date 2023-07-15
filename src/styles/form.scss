@@ -1,19 +1,25 @@
 @import 'vars';
 
 @mixin contentLayout {
+  position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid;
   border-radius: 8px;
   background-color: $white;
   padding: 20px;
   row-gap: 10px;
 }
 
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .textbox {
   overflow-wrap: break-word;
   outline: none;
-  border-bottom: 1px solid $light-grey;
+  border-bottom: 1px solid $light-gray;
 }
 
 .focus {
@@ -59,13 +65,11 @@
 }
 
 .question-dropdown {
+  @include flexCenter;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 150px;
   height: 32px;
-  border: 1px solid $light-grey;
+  border: 1px solid $light-gray;
   border-radius: 4px;
   font-size: 14px;
 }
@@ -73,7 +77,7 @@
 .question-dropdown-list {
   position: absolute;
   top: 0;
-  border: 1px solid $light-grey;
+  border: 1px solid $light-gray;
   border-radius: 4px;
 }
 
@@ -114,10 +118,10 @@
 .option-input {
   width: calc(100% - 40px);
   &:hover {
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid $light-gray;
   }
   &:focus {
-    border-bottom: 1px solid $light-grey;
+    border-bottom: 1px solid $light-gray;
   }
 }
 
@@ -149,12 +153,23 @@
   display: flex;
   justify-content: flex-end;
   column-gap: 15px;
-  border-top: 1px solid $light-grey;
+  border-top: 1px solid $light-gray;
   margin-top: 20px;
   padding-top: 20px;
   height: 40px;
 }
 
 .divider {
-  border: 1px solid $light-grey;
+  border: 1px solid $light-gray;
+}
+
+.add-question-button {
+  @include flexCenter;
+  position: absolute;
+  right: -40px;
+  background-color: $white;
+  width: 35px;
+  height: 35px;
+  border: 1px solid $light-gray;
+  border-radius: 10px;
 }

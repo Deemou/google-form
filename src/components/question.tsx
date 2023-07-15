@@ -1,3 +1,4 @@
+import { AddQuestionButton } from './add-question-button';
 import QuestionAnswers from './question-answers';
 import QuestionSetting from './question-setting';
 import QuestionTitle from './question-title';
@@ -21,6 +22,7 @@ export default function Question({
       <QuestionTitle index={index} />
       <QuestionAnswers index={index} />
       {isFocused && <QuestionSetting index={index} />}
+      {isFocused && <AddQuestionButton index={index} isTitle={false} />}
     </div>
   );
 }

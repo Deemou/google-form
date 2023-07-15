@@ -6,6 +6,7 @@ import {
 } from '@app/slices/infoSlice';
 import { setFocusedStatusAt } from '@app/slices/contentSlice';
 import { useCallback } from 'react';
+import { AddQuestionButton } from './add-question-button';
 
 export default function FormInfo() {
   const dispatch = useAppDispatch();
@@ -75,6 +76,7 @@ export default function FormInfo() {
               </span>
             </>
           )}
+          {isFocused && <AddQuestionButton isTitle />}
         </div>
       </section>
     </>
