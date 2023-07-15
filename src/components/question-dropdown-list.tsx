@@ -38,6 +38,7 @@ export default function QuestionDropdownList({
   const onListClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     setIsDropdownVisible(false);
 
+    // 부모 컴포넌트에 이벤트 위임
     const target = e.target as HTMLDivElement;
     if (!target.classList.contains('question-dropdown-item')) return;
     if (!target.dataset.key) return;
