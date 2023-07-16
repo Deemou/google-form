@@ -57,7 +57,7 @@ export default function UserQuestion({ index }: UserQuestion) {
       {type === 'checkboxes' && <UserCheckboxAnswer index={index} />}
       {type === 'dropdown' && <UserDropdownAnswer index={index} />}
       {isError && (
-        <span aria-label="Required question notification">
+        <span aria-label="Required question notification" className="required">
           This is a required question
         </span>
       )}
