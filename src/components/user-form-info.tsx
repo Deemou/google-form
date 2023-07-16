@@ -8,6 +8,7 @@ export default function UserFormInfo() {
       <div className="form-info">
         <span className="form-title">{title || 'Untitled form'}</span>
         <span className="form-description">{description}</span>
+        <span className="required">* Indicates required question</span>
       </div>
     </section>
   );

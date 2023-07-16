@@ -40,7 +40,7 @@ export default function QuestionDropdownList({
 
     // 부모 컴포넌트에 이벤트 위임
     const target = e.target as HTMLDivElement;
-    if (!target.classList.contains('question-dropdown-item')) return;
+    if (!target.classList.contains('dropdown-item')) return;
     if (!target.dataset.key) return;
     if (target.dataset.key === type) return;
 
@@ -50,16 +50,12 @@ export default function QuestionDropdownList({
   }, []);
 
   return (
-    <div
-      onClick={onListClick}
-      ref={dropdownListRef}
-      className="question-dropdown-list"
-    >
+    <div onClick={onListClick} ref={dropdownListRef} className="dropdown-list">
       {getQuestionTypeList().map((v) => (
         <button
           key={v}
           data-key={v}
-          className={`question-dropdown-item ${v === type ? 'highlight' : ''}`}
+          className={`dropdown-item ${v === type ? 'highlight' : ''}`}
         >
           {matchType(v)}
         </button>

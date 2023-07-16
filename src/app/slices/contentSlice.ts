@@ -154,12 +154,6 @@ const contentSlice = createSlice({
       action: PayloadAction<{ index: number; etcInput: string }>
     ) => {
       const { index, etcInput } = action.payload;
-      if (!state.questions[index].chosenOptions.includes('etc')) {
-        if (state.questions[index].type === 'radio') {
-          state.questions[index].chosenOptions = [];
-        }
-        state.questions[index].chosenOptions.push('etc');
-      }
       state.questions[index].etcInput = etcInput;
     },
 
