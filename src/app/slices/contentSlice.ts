@@ -171,6 +171,13 @@ const contentSlice = createSlice({
     clearAnswerAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
       state.questions[index].chosenOptions = [];
+    },
+
+    clearForm: (state) => {
+      for (let i = 0; i < state.questions.length; i++) {
+        state.questions[i].chosenOptions = [];
+        state.questions[i].etcInput = '';
+      }
     }
   }
 });
@@ -192,7 +199,8 @@ export const {
   updateCheckboxAnswerAt,
   updateEtcInputAt,
   updateErrorStatusAt,
-  clearAnswerAt
+  clearAnswerAt,
+  clearForm
 } = contentSlice.actions;
 
 export default contentSlice.reducer;
