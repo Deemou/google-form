@@ -2,6 +2,7 @@ import { questionType } from '@/types/formTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IQuestion {
+  id: string;
   title: string;
   type: questionType;
   optionList: string[];
@@ -13,11 +14,17 @@ interface IQuestion {
   isError: boolean;
 }
 
+interface ICounter {
+  questionId: number;
+}
+
 interface IcontentSlice {
   questions: IQuestion[];
+  counter: ICounter;
 }
 
 const defaultQuestion: IQuestion = {
+  id: '1',
   title: 'Question',
   type: 'radio',
   optionList: ['Option 1'],
@@ -28,8 +35,14 @@ const defaultQuestion: IQuestion = {
   etcInput: '',
   isError: false
 };
+
+const defaultCounter: ICounter = {
+  questionId: 2
+};
+
 const initialState: IcontentSlice = {
-  questions: [{ ...defaultQuestion, isFocused: false }]
+  questions: [{ ...defaultQuestion, isFocused: false }],
+  counter: defaultCounter
 };
 
 const contentSlice = createSlice({
@@ -66,7 +79,11 @@ const contentSlice = createSlice({
 
     addDefaultQuestionAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
-      state.questions.splice(index, 0, defaultQuestion);
+      state.questions.splice(index, 0, {
+        ...defaultQuestion,
+        id: String(state.counter.questionId)
+      });
+      state.counter.questionId += 1;
     },
 
     removeQuestionAt: (state, action: PayloadAction<{ index: number }>) => {
@@ -79,8 +96,10 @@ const contentSlice = createSlice({
       const duplicatedQuestion = {
         ...state.questions[index],
         chosenOptions: [],
-        etcInput: ''
+        etcInput: '',
+        id: String(state.counter.questionId)
       };
+      state.counter.questionId += 1;
       state.questions.splice(index + 1, 0, duplicatedQuestion);
     },
 
@@ -186,6 +205,35 @@ const contentSlice = createSlice({
         state.questions[i].chosenOptions = [];
         state.questions[i].etcInput = '';
       }
+    },
+
+    moveQuestion: (
+      state,
+      action: PayloadAction<{ oldIndex: number; newIndex: number }>
+    ) => {
+      const { oldIndex, newIndex } = action.payload;
+      state.questions.splice(
+        newIndex < 0 ? state.questions.length + newIndex : newIndex,
+        0,
+        state.questions.splice(oldIndex, 1)[0]
+      );
+    },
+
+    moveOption: (
+      state,
+      action: PayloadAction<{
+        questionIndex: number;
+        oldIndex: number;
+        newIndex: number;
+      }>
+    ) => {
+      const { questionIndex, oldIndex, newIndex } = action.payload;
+      const optionList = state.questions[questionIndex].optionList;
+      optionList.splice(
+        newIndex < 0 ? optionList.length + newIndex : newIndex,
+        0,
+        optionList.splice(oldIndex, 1)[0]
+      );
     }
   }
 });
@@ -208,7 +256,9 @@ export const {
   updateEtcInputAt,
   updateErrorStatusAt,
   clearAnswerAt,
-  clearForm
+  clearForm,
+  moveQuestion,
+  moveOption
 } = contentSlice.actions;
 
 export default contentSlice.reducer;

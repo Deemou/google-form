@@ -6,7 +6,7 @@
   flex-direction: column;
   border-radius: 8px;
   background-color: $white;
-  padding: 20px;
+  padding: 5px 20px 25px 20px;
   row-gap: 10px;
 }
 
@@ -233,4 +233,19 @@
 .go-back-button {
   background-color: $royal-blue;
   color: $white;
+}
+
+.move {
+  cursor: move;
+  text-align: center;
+  height: 20px;
+  margin-bottom: -5px;
+  svg {
+    visibility: hidden;
+  }
+  &:hover {
+    svg {
+      visibility: visible;
+    }
+  }
 }
