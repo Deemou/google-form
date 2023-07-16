@@ -40,7 +40,10 @@ export default function QuestionTitle({ index }: QuestionTitleProps) {
               {title}
             </div>
             <div className="dropdown">
-              <button onClick={onDropdownButtonClick}>
+              <button
+                onClick={onDropdownButtonClick}
+                className="dropdown-button"
+              >
                 <span>{matchType(type)}</span>
               </button>
               {isDropdownVisible && (

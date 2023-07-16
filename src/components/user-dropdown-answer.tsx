@@ -66,7 +66,7 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
   return (
     <>
       <div className="dropdown">
-        <button onClick={onDropdownButtonClick}>
+        <button onClick={onDropdownButtonClick} className="dropdown-button">
           {chosenOptions[0] || 'Choose'}
         </button>
         {isDropdownVisible && (
