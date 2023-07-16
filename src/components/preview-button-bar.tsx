@@ -11,13 +11,14 @@ export default function PreviewButtonBar() {
     let isError = false;
     for (let i = 0; i < questions.length; i++) {
       dispatch(updateErrorStatusAt({ index: i }));
-      if (
-        (questions[i].isRequired &&
-          (questions[i].chosenOptions.length === 0 ||
-            questions[i].chosenOptions[0] === '')) ||
-        (questions[i].chosenOptions[0] === 'etc' &&
-          questions[i].etcInput === '')
-      ) {
+
+      const isOptionEmpty =
+        questions[i].chosenOptions.length === 0 ||
+        questions[i].chosenOptions[0] === '';
+      const isInvalidEtcInput =
+        questions[i].chosenOptions[0] === 'etc' && questions[i].etcInput === '';
+
+      if (questions[i].isRequired && (isOptionEmpty || isInvalidEtcInput)) {
         isError = true;
         break;
       }

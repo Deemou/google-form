@@ -165,12 +165,13 @@ const contentSlice = createSlice({
     updateErrorStatusAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
       const question = state.questions[index];
-      if (
-        (question.isRequired &&
-          (question.chosenOptions.length === 0 ||
-            question.chosenOptions[0] === '')) ||
-        (question.chosenOptions[0] === 'etc' && question.etcInput === '')
-      )
+
+      const isOptionEmpty =
+        question.chosenOptions.length === 0 || question.chosenOptions[0] === '';
+      const isInvalidEtcInput =
+        question.chosenOptions[0] === 'etc' && question.etcInput === '';
+
+      if (question.isRequired && (isOptionEmpty || isInvalidEtcInput))
         state.questions[index].isError = true;
       else state.questions[index].isError = false;
     },
