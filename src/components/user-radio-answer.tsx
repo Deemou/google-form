@@ -12,6 +12,7 @@ interface UserRadioAnswerProps {
 
 export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
   const dispatch = useAppDispatch();
+  const { isSubmit } = useAppSelector((state) => state.infoSlice);
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { isRequired, optionList, chosenOptions, hasEtc, etcInput } =
     questions[index];
@@ -47,6 +48,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             id={String(optionIndex)}
             onChange={onChangeRadioAnswer}
             type="radio"
+            disabled={isSubmit}
             value={option}
             name={`question_${index}`}
             checked={chosenOptions[0] === option}
@@ -65,6 +67,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             id="etc"
             onChange={onChangeRadioAnswer}
             type="radio"
+            disabled={isSubmit}
             value="etc"
             name={`question_${index}`}
             checked={chosenOptions[0] === 'etc'}
@@ -74,6 +77,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
           <input
             onChange={onChangeEtcInput}
             type="text"
+            disabled={isSubmit}
             value={etcInput}
             aria-label="Other answer"
           />

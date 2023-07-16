@@ -74,8 +74,6 @@
   min-width: 150px;
   width: max-content;
   height: 40px;
-  border: 1px solid $light-gray;
-  border-radius: 4px;
   font-size: 14px;
 }
 
@@ -86,6 +84,8 @@
   width: 100%;
   text-align: left;
   padding: 10px;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
 }
 
 .dropdown-list {

@@ -11,6 +11,7 @@ interface UserCheckboxAnswer {
 
 export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
   const dispatch = useAppDispatch();
+  const { isSubmit } = useAppSelector((state) => state.infoSlice);
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { optionList, chosenOptions, hasEtc, etcInput } = questions[index];
 
@@ -41,6 +42,7 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
             id={String(optionIndex)}
             onChange={onChangeCheckboxAnswer}
             type="checkbox"
+            disabled={isSubmit}
             value={option}
             checked={chosenOptions.includes(option)}
             aria-label="Option"
@@ -58,6 +60,7 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
             id="etc"
             onChange={onChangeCheckboxAnswer}
             type="checkbox"
+            disabled={isSubmit}
             value="etc"
             checked={chosenOptions.includes('etc')}
             aria-label="Other option"
@@ -65,6 +68,7 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
           <label htmlFor="etc">Other: </label>
           <input
             type="text"
+            disabled={isSubmit}
             value={etcInput}
             onChange={onChangeEtcInput}
             aria-label="Other answer"

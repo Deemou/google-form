@@ -11,8 +11,10 @@ import UserDropdownAnswer from './user-dropdown-answer';
 interface UserQuestion {
   index: number;
 }
+
 export default function UserQuestion({ index }: UserQuestion) {
   const dispatch = useAppDispatch();
+  const { isSubmit } = useAppSelector((state) => state.infoSlice);
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { title, type, isRequired, isError, chosenOptions } = questions[index];
 
@@ -35,6 +37,7 @@ export default function UserQuestion({ index }: UserQuestion) {
       {type === 'short-answer' && (
         <input
           onChange={onChangeShortAnswer}
+          disabled={isSubmit}
           value={chosenOptions[0] || ''}
           placeholder="Your answer"
           aria-label="Short answer"
@@ -45,7 +48,7 @@ export default function UserQuestion({ index }: UserQuestion) {
         <div
           onBlur={onBlurLongAnswer}
           placeholder="Your answer"
-          contentEditable
+          contentEditable={!isSubmit}
           suppressContentEditableWarning={true}
           role="textbox"
           aria-label="Long answer"

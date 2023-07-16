@@ -13,6 +13,7 @@ interface UserDropdownAnswer {
 
 export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
   const dispatch = useAppDispatch();
+  const { isSubmit } = useAppSelector((state) => state.infoSlice);
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { optionList, chosenOptions } = questions[index];
 
@@ -66,40 +67,50 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
 
   return (
     <>
-      <div className="dropdown">
-        <button
-          onClick={onDropdownButtonClick}
-          type="button"
-          aria-label="Dropdown button"
-          className="dropdown-button"
-        >
-          {chosenOptions[0] || 'Choose'}
-          <DropdownIcon />
-        </button>
-        {isDropdownVisible && (
-          <div
-            onClick={onListClick}
-            ref={dropdownListRef}
-            role="listbox"
-            aria-label="Dropdown list"
-            className="dropdown-list"
+      {!isSubmit && (
+        <div className="dropdown">
+          <button
+            onClick={onDropdownButtonClick}
+            type="button"
+            aria-label="Dropdown button"
+            className="dropdown-button"
           >
-            {['Choose', ...optionList].map((option) => (
-              <button
-                key={option}
-                data-key={option}
-                type="button"
-                aria-label="Dropdown item"
-                className={`dropdown-item ${
-                  option === chosenOptions[0] ? 'highlight' : ''
-                }`}
-              >
-                {option}
-              </button>
-            ))}
+            {chosenOptions[0] || 'Choose'}
+            <DropdownIcon />
+          </button>
+          {isDropdownVisible && (
+            <div
+              onClick={onListClick}
+              ref={dropdownListRef}
+              role="listbox"
+              aria-label="Dropdown list"
+              className="dropdown-list"
+            >
+              {['Choose', ...optionList].map((option) => (
+                <button
+                  key={option}
+                  data-key={option}
+                  type="button"
+                  aria-label="Dropdown item"
+                  className={`dropdown-item ${
+                    option === chosenOptions[0] ? 'highlight' : ''
+                  }`}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+      {isSubmit && (
+        <div className="dropdown">
+          <div aria-label="chosen option" className="dropdown-button">
+            {chosenOptions[0] || 'Choose'}
+            <DropdownIcon />
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 }
