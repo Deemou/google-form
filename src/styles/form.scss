@@ -206,3 +206,31 @@
 .clear-button {
   width: fit-content;
 }
+
+.preview-button-bar {
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+  margin-top: 20px;
+
+  button {
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  .left {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;
+  }
+}
+
+.submit-button {
+  background-color: $purple-heart;
+  color: $white;
+}
+
+.go-back-button {
+  background-color: $royal-blue;
+  color: $white;
+}
