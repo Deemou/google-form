@@ -16,7 +16,7 @@ export default function UserQuestion({ index }: UserQuestion) {
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { title, type, isRequired, isError, chosenOptions } = questions[index];
 
-  const onBlurShortAnswer = (e: React.FocusEvent<HTMLInputElement>) => {
+  const onChangeShortAnswer = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(updateTextAnswerAt({ index, text: e.target.value }));
     dispatch(updateErrorStatusAt({ index }));
   };
@@ -34,7 +34,8 @@ export default function UserQuestion({ index }: UserQuestion) {
       </span>
       {type === 'short-answer' && (
         <input
-          onBlur={onBlurShortAnswer}
+          onChange={onChangeShortAnswer}
+          value={chosenOptions[0] || ''}
           placeholder="Your answer"
           aria-label="Short answer"
           className="short-answer"
