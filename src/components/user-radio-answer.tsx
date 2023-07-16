@@ -33,11 +33,6 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
 
   const onClearAnswer = () => {
     dispatch(clearAnswerAt({ index }));
-    const radios = document.querySelectorAll('input[type=radio]');
-    for (let i = 0; i < radios.length; i++) {
-      const radio = radios[i] as HTMLInputElement;
-      radio.checked = false;
-    }
   };
 
   return (
@@ -53,7 +48,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             onChange={onChangeRadioAnswer}
             type="radio"
             value={option}
-            name="radio"
+            name={`question_${index}`}
             checked={chosenOptions[0] === option}
             aria-label="Option"
           />
@@ -71,7 +66,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             onChange={onChangeRadioAnswer}
             type="radio"
             value="etc"
-            name="radio"
+            name={`question_${index}`}
             checked={chosenOptions[0] === 'etc'}
             aria-label="Other option"
           />
