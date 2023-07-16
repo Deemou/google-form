@@ -4,12 +4,14 @@ interface IinfoSlice {
   title: string;
   description: string;
   isFocused: boolean;
+  isSubmit: boolean;
 }
 
 const initialState: IinfoSlice = {
   title: 'Untitled form',
   description: '',
-  isFocused: false
+  isFocused: false,
+  isSubmit: false
 };
 
 const infoSlice = createSlice({
@@ -30,11 +32,19 @@ const infoSlice = createSlice({
     setFocusedStatus: (state, action: PayloadAction<{ status: boolean }>) => {
       const { status } = action.payload;
       state.isFocused = status;
+    },
+    setSubmitStatus: (state, action: PayloadAction<{ status: boolean }>) => {
+      const { status } = action.payload;
+      state.isSubmit = status;
     }
   }
 });
 
-export const { updateTitle, updateDescription, setFocusedStatus } =
-  infoSlice.actions;
+export const {
+  updateTitle,
+  updateDescription,
+  setFocusedStatus,
+  setSubmitStatus
+} = infoSlice.actions;
 
 export default infoSlice.reducer;

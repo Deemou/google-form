@@ -1,11 +1,9 @@
 import { useAppSelector } from '@/app/hooks';
 
-interface UserFormInfoProps {
-  isSubmit: boolean;
-}
-
-export default function UserFormInfo({ isSubmit }: UserFormInfoProps) {
-  const { title, description } = useAppSelector((state) => state.infoSlice);
+export default function UserFormInfo() {
+  const { title, description, isSubmit } = useAppSelector(
+    (state) => state.infoSlice
+  );
 
   return (
     <section aria-label="Form info">
