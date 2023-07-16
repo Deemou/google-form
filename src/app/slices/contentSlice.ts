@@ -154,15 +154,22 @@ const contentSlice = createSlice({
       action: PayloadAction<{ index: number; etcInput: string }>
     ) => {
       const { index, etcInput } = action.payload;
-      state.questions[index].etcInput = etcInput;
+      const question = state.questions[index];
+      if (!question.chosenOptions.includes('etc')) {
+        if (question.type === 'radio') question.chosenOptions = [];
+        question.chosenOptions.push('etc');
+      }
+      question.etcInput = etcInput;
     },
 
     updateErrorStatusAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
+      const question = state.questions[index];
       if (
-        state.questions[index].isRequired &&
-        (state.questions[index].chosenOptions.length === 0 ||
-          state.questions[index].chosenOptions[0] === '')
+        (question.isRequired &&
+          (question.chosenOptions.length === 0 ||
+            question.chosenOptions[0] === '')) ||
+        (question.chosenOptions[0] === 'etc' && question.etcInput === '')
       )
         state.questions[index].isError = true;
       else state.questions[index].isError = false;

@@ -12,8 +12,11 @@ export default function PreviewButtonBar() {
     for (let i = 0; i < questions.length; i++) {
       dispatch(updateErrorStatusAt({ index: i }));
       if (
-        (questions[i].isRequired && questions[i].chosenOptions.length === 0) ||
-        questions[i].chosenOptions[0] === ''
+        (questions[i].isRequired &&
+          (questions[i].chosenOptions.length === 0 ||
+            questions[i].chosenOptions[0] === '')) ||
+        (questions[i].chosenOptions[0] === 'etc' &&
+          questions[i].etcInput === '')
       ) {
         isError = true;
         break;
