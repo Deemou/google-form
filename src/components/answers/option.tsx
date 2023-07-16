@@ -17,11 +17,7 @@ export default function Option({
 }: OptionProps) {
   const dispatch = useAppDispatch();
 
-  const onChangeOption = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    questionIndex: number,
-    optionIndex: number
-  ) => {
+  const onChangeOption = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       changeNthOptionAt({
         questionIndex,
@@ -40,7 +36,7 @@ export default function Option({
       <input
         value={option}
         aria-label="Option"
-        onChange={(e) => onChangeOption(e, questionIndex, optionIndex)}
+        onChange={onChangeOption}
         className="option-input"
       />
       {optionList.length > 1 && (
