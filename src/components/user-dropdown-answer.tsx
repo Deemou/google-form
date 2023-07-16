@@ -4,7 +4,7 @@ import {
   updateErrorStatusAt,
   updateRadioOrDropdownAnswerAt
 } from '@/app/slices/contentSlice';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface UserDropdownAnswer {
   index: number;
@@ -15,16 +15,31 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
   const { questions } = useAppSelector((state) => state.contentSlice);
   const { optionList, chosenOptions } = questions[index];
 
-  const clearAnswer = () => {
-    dispatch(clearAnswerAt({ index }));
-    dispatch(updateErrorStatusAt({ index }));
-  };
-
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownListRef = useRef<HTMLDivElement | null>(null);
+
   const onDropdownButtonClick = () => {
     setIsDropdownVisible(true);
   };
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (!dropdownListRef.current) return;
+    if (dropdownListRef.current.contains(e.target as Node)) return;
+    setIsDropdownVisible(false);
+  };
+
+  useEffect(() => {
+    // 동일한 클릭 이벤트로 인해 이벤트 리스너가 즉시 실행되는 것을 방지
+    if (!isDropdownVisible) return;
+    const timer = setTimeout(() => {
+      document.addEventListener('click', handleClickOutside);
+    }, 1);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [isDropdownVisible]);
+
   const onListClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     setIsDropdownVisible(false);
 
@@ -42,6 +57,11 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
       updateRadioOrDropdownAnswerAt({ index, value: target.dataset.key })
     );
   }, []);
+
+  const clearAnswer = () => {
+    dispatch(clearAnswerAt({ index }));
+    dispatch(updateErrorStatusAt({ index }));
+  };
 
   return (
     <>
