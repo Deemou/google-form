@@ -6,7 +6,7 @@
   flex-direction: column;
   border-radius: 8px;
   background-color: $white;
-  padding: 5px 20px 25px 20px;
+  padding: 5px 20px 25px 30px;
   row-gap: 10px;
 }
 
@@ -121,7 +121,15 @@
   margin-right: 5px;
 }
 
+.option-list {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  row-gap: 10px;
+}
+
 .option-wrapper {
+  position: relative;
   display: flex;
   column-gap: 10px;
 }
@@ -240,6 +248,21 @@
   text-align: center;
   height: 20px;
   margin-bottom: -5px;
+  svg {
+    visibility: hidden;
+  }
+  &:hover {
+    svg {
+      visibility: visible;
+    }
+  }
+}
+
+.move-vertical {
+  cursor: move;
+  position: absolute;
+  left: -20px;
+  top: 3px;
   svg {
     visibility: hidden;
   }

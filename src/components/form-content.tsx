@@ -3,7 +3,7 @@ import { setFocusedStatus } from '@app/slices/infoSlice';
 import { setFocusedStatusAt, moveQuestion } from '@app/slices/contentSlice';
 import { useCallback } from 'react';
 import Question from './question';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import StrictDroppable from './strict-droppable';
 
 export default function FormContent() {
