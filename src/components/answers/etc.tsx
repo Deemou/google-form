@@ -21,7 +21,12 @@ export default function Etc({ index }: EtcProps) {
       <Checker type={type} />
       <div className="option">
         {isFocused ? (
-          <input disabled value="Other..." className="option-input" />
+          <input
+            disabled
+            value="Other..."
+            aria-label="Other option"
+            className="option-input"
+          />
         ) : (
           <span>Other...</span>
         )}

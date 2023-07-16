@@ -8,7 +8,13 @@ export default function RemoveOptionButton({
   onClickRemove
 }: RemoveOptionButtonProps) {
   return (
-    <button onClick={onClickRemove} className="remove-option-btn">
+    <button
+      onClick={onClickRemove}
+      type="button"
+      title="Remove"
+      aria-label="Remove option"
+      className="remove-option-btn"
+    >
       <XIcon />
     </button>
   );

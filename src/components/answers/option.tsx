@@ -36,9 +36,10 @@ export default function Option({
   };
 
   return (
-    <div className="option">
+    <div aria-label="Option" className="option">
       <input
         value={option}
+        aria-label="Option"
         onChange={(e) => onChangeOption(e, questionIndex, optionIndex)}
         className="option-input"
       />

@@ -3,7 +3,7 @@ import '@styles/header.scss';
 
 export default function Header() {
   return (
-    <header className="header">
+    <header aria-label="Header" className="header">
       <div className="button-list">
         <PreviewButton />
       </div>

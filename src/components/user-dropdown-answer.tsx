@@ -67,7 +67,12 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
   return (
     <>
       <div className="dropdown">
-        <button onClick={onDropdownButtonClick} className="dropdown-button">
+        <button
+          onClick={onDropdownButtonClick}
+          type="button"
+          aria-label="Dropdown button"
+          className="dropdown-button"
+        >
           {chosenOptions[0] || 'Choose'}
           <DropdownIcon />
         </button>
@@ -75,12 +80,16 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
           <div
             onClick={onListClick}
             ref={dropdownListRef}
+            role="listbox"
+            aria-label="Dropdown list"
             className="dropdown-list"
           >
             {['Choose', ...optionList].map((option) => (
               <button
                 key={option}
                 data-key={option}
+                type="button"
+                aria-label="Dropdown item"
                 className={`dropdown-item ${
                   option === chosenOptions[0] ? 'highlight' : ''
                 }`}

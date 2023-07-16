@@ -13,7 +13,12 @@ export default function AddOptionButton({ index }: AddOptionButtonProps) {
   };
 
   return (
-    <button onClick={onClickAddOption} type="button" className="add-option">
+    <button
+      onClick={onClickAddOption}
+      type="button"
+      aria-label="Add option"
+      className="add-option"
+    >
       Add option
     </button>
   );

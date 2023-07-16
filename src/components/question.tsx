@@ -17,6 +17,7 @@ export default function Question({
   return (
     <div
       onClick={() => onClickQuestion(index)}
+      aria-label="Question"
       className={`question ${isFocused ? 'focus' : ''}`}
     >
       <QuestionTitle index={index} />

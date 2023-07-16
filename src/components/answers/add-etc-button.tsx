@@ -15,7 +15,11 @@ export default function AddEtcButton({ index }: AddOptionButtonProps) {
   return (
     <>
       <span>or</span>
-      <button onClick={onClickAddEtc} type="button">
+      <button
+        onClick={onClickAddEtc}
+        type="button"
+        aria-label="Add other option"
+      >
         Add &quot;Other&quot;
       </button>
     </>

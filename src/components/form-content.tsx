@@ -23,7 +23,7 @@ export default function FormContent() {
   };
 
   return (
-    <section>
+    <section aria-label="Form content">
       {questions.map(({ isFocused }, index) => (
         <Question
           key={`question_${index}`}

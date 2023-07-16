@@ -32,30 +32,43 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
   return (
     <>
       {optionList.map((option, optionIndex) => (
-        <div key={`check_${optionIndex}`} className="option">
+        <div
+          key={`check_${optionIndex}`}
+          aria-label="Option"
+          className="option"
+        >
           <input
             id={String(optionIndex)}
             onChange={onChangeCheckboxAnswer}
             type="checkbox"
             value={option}
             checked={chosenOptions.includes(option)}
+            aria-label="Option"
           />
           <div className="min-w-0">
-            <label htmlFor={String(optionIndex)}>{option}</label>
+            <label htmlFor={String(optionIndex)} aria-label="Option value">
+              {option}
+            </label>
           </div>
         </div>
       ))}
       {hasEtc && (
-        <div className="option">
+        <div aria-label="Other option" className="option">
           <input
             id="etc"
             onChange={onChangeCheckboxAnswer}
             type="checkbox"
             value="etc"
             checked={chosenOptions.includes('etc')}
+            aria-label="Other option"
           />
           <label htmlFor="etc">Other: </label>
-          <input type="text" value={etcInput} onChange={onChangeEtcInput} />
+          <input
+            type="text"
+            value={etcInput}
+            onChange={onChangeEtcInput}
+            aria-label="Other answer"
+          />
         </div>
       )}
     </>

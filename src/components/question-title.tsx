@@ -43,6 +43,8 @@ export default function QuestionTitle({ index }: QuestionTitleProps) {
             <div className="dropdown">
               <button
                 onClick={onDropdownButtonClick}
+                type="button"
+                aria-label="Dropdown button"
                 className="dropdown-button"
               >
                 <span>{matchType(type)}</span>
@@ -58,7 +60,7 @@ export default function QuestionTitle({ index }: QuestionTitleProps) {
             </div>
           </>
         ) : (
-          <span className="question-title">
+          <span aria-label="Question title" className="question-title">
             {title || 'Question'}
             {isRequired && <RequiredMark />}
           </span>

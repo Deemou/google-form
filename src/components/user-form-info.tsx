@@ -4,11 +4,17 @@ export default function UserFormInfo() {
   const { title, description } = useAppSelector((state) => state.infoSlice);
 
   return (
-    <section>
+    <section aria-label="Form info">
       <div className="form-info">
-        <span className="form-title">{title || 'Untitled form'}</span>
-        <span className="form-description">{description}</span>
-        <span className="required">* Indicates required question</span>
+        <span aria-label="Form title" className="form-title">
+          {title || 'Untitled form'}
+        </span>
+        <span aria-label="Form description" className="form-description">
+          {description}
+        </span>
+        <span aria-label="Required question notification" className="required">
+          * Indicates required question
+        </span>
       </div>
     </section>
   );

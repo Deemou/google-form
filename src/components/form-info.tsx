@@ -40,7 +40,11 @@ export default function FormInfo() {
 
   return (
     <>
-      <section onClick={onInfoClick} className={` ${isFocused ? 'focus' : ''}`}>
+      <section
+        onClick={onInfoClick}
+        aria-label="Form info"
+        className={` ${isFocused ? 'focus' : ''}`}
+      >
         <div className="form-info">
           {isFocused ? (
             <>
@@ -69,8 +73,10 @@ export default function FormInfo() {
             </>
           ) : (
             <>
-              <span className="form-title">{title || 'Untitled form'}</span>
-              <span className="form-description">
+              <span aria-label="Form title" className="form-title">
+                {title || 'Untitled form'}
+              </span>
+              <span aria-label="Form description" className="form-description">
                 {description || 'Form description'}
               </span>
             </>

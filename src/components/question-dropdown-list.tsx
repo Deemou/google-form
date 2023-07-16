@@ -50,11 +50,20 @@ export default function QuestionDropdownList({
   }, []);
 
   return (
-    <div onClick={onListClick} ref={dropdownListRef} className="dropdown-list">
+    <div
+      onClick={onListClick}
+      ref={dropdownListRef}
+      role="listbox"
+      aria-label="Dropdown list"
+      className="dropdown-list"
+    >
       {getQuestionTypeList().map((v) => (
         <button
           key={v}
           data-key={v}
+          type="button"
+          role="listitem"
+          aria-label="Dropdown item"
           className={`dropdown-item ${v === type ? 'highlight' : ''}`}
         >
           {matchType(v)}

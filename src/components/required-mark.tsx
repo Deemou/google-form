@@ -1,3 +1,7 @@
 export default function RequiredMark() {
-  return <span className="required">*</span>;
+  return (
+    <span aria-label="Required question notification" className="required">
+      *
+    </span>
+  );
 }

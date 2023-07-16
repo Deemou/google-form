@@ -7,7 +7,7 @@ interface CheckerProps {
 
 export default function Checker({ type }: CheckerProps) {
   return (
-    <div className="checker">
+    <div aria-label="Checker mark" className="checker">
       {type === 'radio' && <input type="radio" disabled />}
       {type === 'checkboxes' && <input type="checkbox" disabled />}
       {type === 'dropdown' && <DropdownIcon />}

@@ -27,7 +27,7 @@ export default function UserQuestion({ index }: UserQuestion) {
   };
 
   return (
-    <div className="question">
+    <div aria-label="Question" className="question">
       <span className="question-title">
         {title}
         {isRequired && <RequiredMark />}
@@ -36,6 +36,7 @@ export default function UserQuestion({ index }: UserQuestion) {
         <input
           onBlur={onBlurShortAnswer}
           placeholder="Your answer"
+          aria-label="Short answer"
           className="short-answer"
         />
       )}
@@ -46,7 +47,7 @@ export default function UserQuestion({ index }: UserQuestion) {
           contentEditable
           suppressContentEditableWarning={true}
           role="textbox"
-          aria-label="Form title"
+          aria-label="Long answer"
           className="textbox"
         >
           {chosenOptions[0]}
@@ -55,7 +56,11 @@ export default function UserQuestion({ index }: UserQuestion) {
       {type === 'radio' && <UserRadioAnswer index={index} />}
       {type === 'checkboxes' && <UserCheckboxAnswer index={index} />}
       {type === 'dropdown' && <UserDropdownAnswer index={index} />}
-      {isError && <span>This is a required question</span>}
+      {isError && (
+        <span aria-label="Required question notification">
+          This is a required question
+        </span>
+      )}
     </div>
   );
 }

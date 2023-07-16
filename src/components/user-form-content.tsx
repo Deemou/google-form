@@ -6,7 +6,7 @@ export default function UserFormContent() {
   const { questions } = useAppSelector((state) => state.contentSlice);
 
   return (
-    <section>
+    <section aria-label="Form content">
       {questions.map((_, index) => {
         return <UserQuestion key={`user_question_${index}`} index={index} />;
       })}

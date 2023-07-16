@@ -43,7 +43,11 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
   return (
     <>
       {optionList.map((option, optionIndex) => (
-        <div key={`radio_${optionIndex}`} className="option">
+        <div
+          key={`radio_${optionIndex}`}
+          aria-label="Option"
+          className="option"
+        >
           <input
             id={String(optionIndex)}
             onChange={onChangeRadioAnswer}
@@ -51,14 +55,17 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             value={option}
             name="radio"
             checked={chosenOptions[0] === option}
+            aria-label="Option"
           />
           <div className="min-w-0">
-            <label htmlFor={String(optionIndex)}>{option}</label>
+            <label aria-label="Option value" htmlFor={String(optionIndex)}>
+              {option}
+            </label>
           </div>
         </div>
       ))}
       {hasEtc && (
-        <div className="option">
+        <div aria-label="Other option" className="option">
           <input
             id="etc"
             onChange={onChangeRadioAnswer}
@@ -66,9 +73,15 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             value="etc"
             name="radio"
             checked={chosenOptions[0] === 'etc'}
+            aria-label="Other option"
           />
           <label htmlFor="etc">Other: </label>
-          <input onChange={onChangeEtcInput} type="text" value={etcInput} />
+          <input
+            onChange={onChangeEtcInput}
+            type="text"
+            value={etcInput}
+            aria-label="Other answer"
+          />
         </div>
       )}
       {!isRequired && chosenOptions.length !== 0 && (
@@ -76,6 +89,7 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
           <button
             onClick={onClearAnswer}
             type="button"
+            aria-label="Clear selection"
             className="clear-button"
           >
             Clear selection

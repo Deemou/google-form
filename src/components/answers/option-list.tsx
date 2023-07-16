@@ -26,7 +26,7 @@ export default function OptionList({ questionIndex }: OptionListProps) {
             />
           ) : (
             <div className="min-w-0">
-              <span>{option}</span>
+              <span aria-label="Option value">{option}</span>
             </div>
           )}
         </div>

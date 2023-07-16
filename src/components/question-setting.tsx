@@ -35,7 +35,7 @@ export default function QuestionSetting({ index }: QuestionSettingProps) {
 
   return (
     <>
-      <div className="question-setting">
+      <div aria-label="Question setting" className="question-setting">
         <button
           onClick={onClickDuplicateQuestion}
           type="button"
@@ -55,12 +55,13 @@ export default function QuestionSetting({ index }: QuestionSettingProps) {
           <TrashbinIcon />
         </button>
         <div className="divider-vertical" />
-        <div className="required-checkbox">
+        <div aria-label="Check required" className="required-checkbox">
           <span>Required</span>
           <input
             type="checkbox"
             checked={isRequired}
             onChange={toggleRequired}
+            aria-label="Required"
           />
         </div>
       </div>

@@ -14,10 +14,13 @@ export default function QuestionAnswers({ index }: QuestionAnswersProps) {
       <input
         disabled
         placeholder="Short answer text"
+        aria-label="Short answer"
         className="short-answer"
       />
     );
   else if (type === 'long-answer')
-    return <input disabled placeholder="Long answer text" />;
+    return (
+      <input disabled placeholder="Long answer text" aria-label="Long answer" />
+    );
   else return <OptionList questionIndex={index} />;
 }
