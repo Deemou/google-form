@@ -4,6 +4,7 @@ import QuestionDropdownList from './question-dropdown-list';
 import matchType from '@/utils/matchType';
 import { useState } from 'react';
 import RequiredMark from './required-mark';
+import DropdownIcon from '@/asset/icon/dropdown-icon';
 
 interface QuestionTitleProps {
   index: number;
@@ -45,6 +46,7 @@ export default function QuestionTitle({ index }: QuestionTitleProps) {
                 className="dropdown-button"
               >
                 <span>{matchType(type)}</span>
+                <DropdownIcon />
               </button>
               {isDropdownVisible && (
                 <QuestionDropdownList

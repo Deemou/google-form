@@ -4,6 +4,7 @@ import {
   updateErrorStatusAt,
   updateRadioOrDropdownAnswerAt
 } from '@/app/slices/contentSlice';
+import DropdownIcon from '@/asset/icon/dropdown-icon';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface UserDropdownAnswer {
@@ -68,6 +69,7 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
       <div className="dropdown">
         <button onClick={onDropdownButtonClick} className="dropdown-button">
           {chosenOptions[0] || 'Choose'}
+          <DropdownIcon />
         </button>
         {isDropdownVisible && (
           <div
