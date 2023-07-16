@@ -86,19 +86,21 @@ export default function UserDropdownAnswer({ index }: UserDropdownAnswer) {
               aria-label="Dropdown list"
               className="dropdown-list"
             >
-              {['Choose', ...optionList].map((option) => (
-                <button
-                  key={option}
-                  data-key={option}
-                  type="button"
-                  aria-label="Dropdown item"
-                  className={`dropdown-item ${
-                    option === chosenOptions[0] ? 'highlight' : ''
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
+              {[{ id: `${index}_default`, value: 'Choose' }, ...optionList].map(
+                (option) => (
+                  <button
+                    key={option.id}
+                    data-key={option.value}
+                    type="button"
+                    aria-label="Dropdown item"
+                    className={`dropdown-item ${
+                      option.value === chosenOptions[0] ? 'highlight' : ''
+                    }`}
+                  >
+                    {option.value}
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>

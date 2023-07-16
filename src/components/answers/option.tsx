@@ -1,10 +1,11 @@
 import { useAppDispatch } from '@/app/hooks';
 import { changeNthOptionAt, removeOptionAt } from '@/app/slices/contentSlice';
 import RemoveOptionButton from '../remove-option-button';
+import { IOption } from '@/types/formTypes';
 
 interface OptionProps {
-  optionList: string[];
-  option: string;
+  optionList: IOption[];
+  option: IOption;
   questionIndex: number;
   optionIndex: number;
 }
@@ -22,7 +23,7 @@ export default function Option({
       changeNthOptionAt({
         questionIndex,
         optionIndex,
-        option: e.target.value
+        value: e.target.value
       })
     );
   };
@@ -34,7 +35,7 @@ export default function Option({
   return (
     <div aria-label="Option" className="option">
       <input
-        value={option}
+        value={option.value}
         aria-label="Option"
         onChange={onChangeOption}
         className="option-input"

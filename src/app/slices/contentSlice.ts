@@ -1,11 +1,11 @@
-import { questionType } from '@/types/formTypes';
+import { questionType, IOption } from '@/types/formTypes';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IQuestion {
   id: string;
   title: string;
   type: questionType;
-  optionList: string[];
+  optionList: IOption[];
   hasEtc: boolean;
   isRequired: boolean;
   isFocused: boolean;
@@ -16,6 +16,7 @@ interface IQuestion {
 
 interface ICounter {
   questionId: number;
+  optionId: number;
 }
 
 interface IcontentSlice {
@@ -23,11 +24,16 @@ interface IcontentSlice {
   counter: ICounter;
 }
 
+const defaultOption: IOption = {
+  id: '1',
+  value: 'Option 1'
+};
+
 const defaultQuestion: IQuestion = {
   id: '1',
   title: 'Question',
   type: 'radio',
-  optionList: ['Option 1'],
+  optionList: [defaultOption],
   hasEtc: false,
   isRequired: false,
   isFocused: true,
@@ -37,7 +43,8 @@ const defaultQuestion: IQuestion = {
 };
 
 const defaultCounter: ICounter = {
-  questionId: 2
+  questionId: 2,
+  optionId: 2
 };
 
 const initialState: IcontentSlice = {
@@ -70,20 +77,24 @@ const contentSlice = createSlice({
       action: PayloadAction<{
         questionIndex: number;
         optionIndex: number;
-        option: string;
+        value: string;
       }>
     ) => {
-      const { questionIndex, optionIndex, option } = action.payload;
-      state.questions[questionIndex].optionList[optionIndex] = option;
+      const { questionIndex, optionIndex, value } = action.payload;
+      state.questions[questionIndex].optionList[optionIndex].value = value;
     },
 
     addDefaultQuestionAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
+      const questionId = String(state.counter.questionId);
+      const optionId = String(state.counter.optionId);
       state.questions.splice(index, 0, {
         ...defaultQuestion,
-        id: String(state.counter.questionId)
+        id: questionId,
+        optionList: [{ ...defaultOption, id: optionId }]
       });
       state.counter.questionId += 1;
+      state.counter.optionId += 1;
     },
 
     removeQuestionAt: (state, action: PayloadAction<{ index: number }>) => {
@@ -93,11 +104,12 @@ const contentSlice = createSlice({
 
     duplicateQuestionAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
+      const questionId = String(state.counter.questionId);
       const duplicatedQuestion = {
         ...state.questions[index],
         chosenOptions: [],
         etcInput: '',
-        id: String(state.counter.questionId)
+        id: questionId
       };
       state.counter.questionId += 1;
       state.questions.splice(index + 1, 0, duplicatedQuestion);
@@ -105,9 +117,12 @@ const contentSlice = createSlice({
 
     addOptionAt: (state, action: PayloadAction<{ index: number }>) => {
       const { index } = action.payload;
-      state.questions[index].optionList.push(
-        `Option ${state.questions[index].optionList.length + 1}`
-      );
+      const newOption: IOption = {
+        id: String(state.counter.optionId),
+        value: `Option ${state.questions[index].optionList.length + 1}`
+      };
+      state.questions[index].optionList.push(newOption);
+      state.counter.optionId += 1;
     },
 
     removeOptionAt: (

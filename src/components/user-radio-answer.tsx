@@ -38,25 +38,21 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
 
   return (
     <>
-      {optionList.map((option, optionIndex) => (
-        <div
-          key={`radio_${optionIndex}`}
-          aria-label="Option"
-          className="option"
-        >
+      {optionList.map((option) => (
+        <div key={`radio_${option.id}`} aria-label="Option" className="option">
           <input
-            id={String(optionIndex)}
+            id={option.id}
             onChange={onChangeRadioAnswer}
             type="radio"
             disabled={isSubmit}
-            value={option}
+            value={option.value}
             name={`question_${index}`}
-            checked={chosenOptions[0] === option}
+            checked={chosenOptions[0] === option.value}
             aria-label="Option"
           />
           <div className="min-w-0">
-            <label aria-label="Option value" htmlFor={String(optionIndex)}>
-              {option}
+            <label aria-label="Option value" htmlFor={option.id}>
+              {option.value}
             </label>
           </div>
         </div>

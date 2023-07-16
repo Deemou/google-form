@@ -15,7 +15,7 @@ export default function OptionList({ questionIndex }: OptionListProps) {
   return (
     <>
       {optionList.map((option, optionIndex) => (
-        <div key={`${questionIndex}_${optionIndex}`} className="option-wrapper">
+        <div key={option.id} className="option-wrapper">
           <Checker type={type} />
           {isFocused ? (
             <Option
@@ -26,7 +26,7 @@ export default function OptionList({ questionIndex }: OptionListProps) {
             />
           ) : (
             <div className="min-w-0">
-              <span aria-label="Option value">{option}</span>
+              <span aria-label="Option value">{option.value}</span>
             </div>
           )}
         </div>

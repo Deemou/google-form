@@ -32,24 +32,20 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
 
   return (
     <>
-      {optionList.map((option, optionIndex) => (
-        <div
-          key={`check_${optionIndex}`}
-          aria-label="Option"
-          className="option"
-        >
+      {optionList.map((option) => (
+        <div key={`check_${option.id}`} aria-label="Option" className="option">
           <input
-            id={String(optionIndex)}
+            id={option.id}
             onChange={onChangeCheckboxAnswer}
             type="checkbox"
             disabled={isSubmit}
-            value={option}
-            checked={chosenOptions.includes(option)}
+            value={option.value}
+            checked={chosenOptions.includes(option.value)}
             aria-label="Option"
           />
           <div className="min-w-0">
-            <label htmlFor={String(optionIndex)} aria-label="Option value">
-              {option}
+            <label htmlFor={option.id} aria-label="Option value">
+              {option.value}
             </label>
           </div>
         </div>
