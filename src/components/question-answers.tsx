@@ -10,7 +10,13 @@ export default function QuestionAnswers({ index }: QuestionAnswersProps) {
   const { type } = questions[index];
 
   if (type === 'short-answer')
-    return <input disabled placeholder="Short answer text" />;
+    return (
+      <input
+        disabled
+        placeholder="Short answer text"
+        className="short-answer"
+      />
+    );
   else if (type === 'long-answer')
     return <input disabled placeholder="Long answer text" />;
   else return <OptionList questionIndex={index} />;
