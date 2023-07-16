@@ -25,7 +25,9 @@ export default function OptionList({ questionIndex }: OptionListProps) {
               optionIndex={optionIndex}
             />
           ) : (
-            <span>{option}</span>
+            <div className="min-w-0">
+              <span>{option}</span>
+            </div>
           )}
         </div>
       ))}

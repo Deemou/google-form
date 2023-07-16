@@ -105,7 +105,7 @@
 
 .option-wrapper {
   display: flex;
-  width: 100%;
+  column-gap: 10px;
 }
 
 .option {
@@ -137,6 +137,7 @@
 .add-option-bar {
   display: flex;
   justify-content: start;
+  column-gap: 10px;
 }
 
 .add-option {

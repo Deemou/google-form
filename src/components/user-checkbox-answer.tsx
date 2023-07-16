@@ -40,7 +40,9 @@ export default function UserCheckboxAnswer({ index }: UserCheckboxAnswer) {
             value={option}
             checked={chosenOptions.includes(option)}
           />
-          <label htmlFor="">{option}</label>
+          <div className="min-w-0">
+            <label htmlFor={String(optionIndex)}>{option}</label>
+          </div>
         </div>
       ))}
       {hasEtc && (

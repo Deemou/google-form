@@ -15,6 +15,7 @@ input {
   outline: none;
   border: none;
   border-bottom: 1px solid $light-gray;
+  min-width: 20px;
 }
 
 svg {
@@ -40,4 +41,8 @@ svg {
     background-color: $white-lilac;
     border-radius: 10px;
   }
+}
+
+.min-w-0 {
+  min-width: 0;
 }

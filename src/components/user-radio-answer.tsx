@@ -52,7 +52,9 @@ export default function UserRadioAnswer({ index }: UserRadioAnswerProps) {
             name="radio"
             checked={chosenOptions[0] === option}
           />
-          <label htmlFor={String(optionIndex)}>{option}</label>
+          <div className="min-w-0">
+            <label htmlFor={String(optionIndex)}>{option}</label>
+          </div>
         </div>
       ))}
       {hasEtc && (
