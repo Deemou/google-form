@@ -40,10 +40,7 @@ export default function FormInfo() {
 
   return (
     <>
-      <section
-        onMouseDown={onInfoClick}
-        className={` ${isFocused ? 'focus' : ''}`}
-      >
+      <section onClick={onInfoClick} className={` ${isFocused ? 'focus' : ''}`}>
         <div className="form-info">
           {isFocused ? (
             <>
@@ -51,6 +48,7 @@ export default function FormInfo() {
                 onBlur={onTitleBlur}
                 contentEditable
                 suppressContentEditableWarning={true}
+                placeholder="Untitled form"
                 role="textbox"
                 aria-label="Form title"
                 className="form-title textbox"
@@ -61,6 +59,7 @@ export default function FormInfo() {
                 onBlur={onDescriptionBlur}
                 contentEditable
                 suppressContentEditableWarning={true}
+                placeholder="Form description"
                 role="textbox"
                 aria-label="Form description"
                 className="form-description textbox"
