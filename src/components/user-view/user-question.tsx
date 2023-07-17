@@ -3,7 +3,7 @@ import {
   updateErrorStatusAt,
   updateTextAnswerAt
 } from '@/app/slices/contentSlice';
-import RequiredMark from './required-mark';
+import RequiredMark from '../required-mark';
 import UserRadioAnswer from './user-radio-answer';
 import UserCheckboxAnswer from './user-checkbox-answer';
 import UserDropdownAnswer from './user-dropdown-answer';

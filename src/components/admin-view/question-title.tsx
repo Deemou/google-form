@@ -3,7 +3,7 @@ import { updateTitleAt } from '@app/slices/contentSlice';
 import QuestionDropdownList from './question-dropdown-list';
 import matchType from '@/utils/matchType';
 import { useState } from 'react';
-import RequiredMark from './required-mark';
+import RequiredMark from '../required-mark';
 import DropdownIcon from '@/asset/icon/dropdown-icon';
 
 interface QuestionTitleProps {

@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/app/hooks';
-import OptionList from './answers/option-list';
+import OptionList from './option-list';
 
 interface QuestionAnswersProps {
   index: number;

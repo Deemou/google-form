@@ -19,10 +19,7 @@ export default function Question({
   onClickQuestion
 }: QuestionProps) {
   return (
-    <Draggable
-      draggableId={`question_${id}`}
-      index={index}
-    >
+    <Draggable draggableId={`question_${id}`} index={index}>
       {(provided) => (
         <div
           ref={provided.innerRef}

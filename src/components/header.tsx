@@ -1,4 +1,4 @@
-import PreviewButton from './preview-button';
+import PreviewButton from './admin-view/preview-button';
 import '@styles/header.scss';
 
 export default function Header() {

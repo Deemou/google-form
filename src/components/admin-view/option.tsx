@@ -1,6 +1,6 @@
 import { useAppDispatch } from '@/app/hooks';
 import { changeNthOptionAt, removeOptionAt } from '@/app/slices/contentSlice';
-import RemoveOptionButton from '../remove-option-button';
+import RemoveOptionButton from './remove-option-button';
 import { IOption } from '@/types/formTypes';
 
 interface OptionProps {
